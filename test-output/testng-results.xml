@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="216808" started-at="2016-05-25T19:25:09Z" finished-at="2016-05-25T19:28:46Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="216808" started-at="2016-05-25T19:25:09Z" finished-at="2016-05-25T19:28:46Z">
+      <class name="testcasses_eprescription.TestOrder">
+        <test-method status="PASS" signature="testSet()[pri:1, instance:testcasses_eprescription.TestOrder@7b993c65]" name="testSet" duration-ms="181534" started-at="2016-05-26T00:25:09Z" finished-at="2016-05-26T00:28:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSet -->
+        <test-method status="PASS" signature="setProcedureData()[pri:3, instance:testcasses_eprescription.TestOrder@7b993c65]" name="setProcedureData" duration-ms="35249" started-at="2016-05-26T00:28:11Z" finished-at="2016-05-26T00:28:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setProcedureData -->
+      </class> <!-- testcasses_eprescription.TestOrder -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
