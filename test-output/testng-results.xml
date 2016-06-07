@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="216808" started-at="2016-05-25T19:25:09Z" finished-at="2016-05-25T19:28:46Z">
+  <suite name="Default suite" duration-ms="148466" started-at="2016-06-07T05:50:18Z" finished-at="2016-06-07T05:52:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="216808" started-at="2016-05-25T19:25:09Z" finished-at="2016-05-25T19:28:46Z">
-      <class name="testcasses_eprescription.TestOrder">
-        <test-method status="PASS" signature="testSet()[pri:1, instance:testcasses_eprescription.TestOrder@7b993c65]" name="testSet" duration-ms="181534" started-at="2016-05-26T00:25:09Z" finished-at="2016-05-26T00:28:11Z">
+    <test name="Default test" duration-ms="148466" started-at="2016-06-07T05:50:18Z" finished-at="2016-06-07T05:52:47Z">
+      <class name="testcasses_eprescription.Vital">
+        <test-method status="PASS" signature="testTable()[pri:0, instance:testcasses_eprescription.Vital@64e7619d]" name="testTable" duration-ms="148447" started-at="2016-06-07T10:50:18Z" finished-at="2016-06-07T10:52:47Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSet -->
-        <test-method status="PASS" signature="setProcedureData()[pri:3, instance:testcasses_eprescription.TestOrder@7b993c65]" name="setProcedureData" duration-ms="35249" started-at="2016-05-26T00:28:11Z" finished-at="2016-05-26T00:28:46Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setProcedureData -->
-      </class> <!-- testcasses_eprescription.TestOrder -->
+        </test-method> <!-- testTable -->
+      </class> <!-- testcasses_eprescription.Vital -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

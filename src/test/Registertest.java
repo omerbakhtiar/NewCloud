@@ -32,7 +32,7 @@ public class Registertest {
 	
  @Test(priority=1)
   public void Registring() throws Exception {
-		   driver.get("http://10.10.1.69:8080/web/cloudclinik/register"); 
+		   driver.get("https://10.10.1.214/web/cloudclinik/register"); 
 		  ReadExcel excel=new ReadExcel(driver);
 	       excel.ReadData(2);
 	       Thread.sleep(5000);
@@ -42,7 +42,7 @@ public class Registertest {
   
    @Test(priority=2)
    public void MandatoryCheck() throws Exception {
-		   driver.get("http://10.10.1.69:8080/web/cloudclinik/register"); 
+	   driver.get("https://10.10.1.214/web/cloudclinik/register"); 
 		   Register reg=new Register(driver);
 	       Thread.sleep(10000);     
 	       Assert.assertEquals(reg.ClickProceed(),"Please enter first name in alphabets");

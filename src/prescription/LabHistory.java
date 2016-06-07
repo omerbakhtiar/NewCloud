@@ -3,6 +3,7 @@ package prescription;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -42,6 +43,10 @@ public class LabHistory {
 				.sendKeys(date);
 
 	}
+	
+	public void searchLab(String value){
+		driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:loincHistroyForm:labAndlabSet")).sendKeys(value);
+	}
 
 	public void clickAllClinicks() {
 		driver.findElement(
@@ -57,35 +62,52 @@ public class LabHistory {
 
 	}
 
-	public void AddResult() {
-		driver.findElement(
-				By.id("_Eprescription_WAR_CloudClinikportlet_:loincHistroyForm:loincHistroyDataTable:0:j_idt352"))
-				.click();
+	public void AddResult() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Thread.sleep(10000);
+		
+		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:loincHistroyForm:loincHistroyDataTable:0:j_idt354').click();");
 	}
 
-	public void insertResult(String result) {
+	public void insertResult(String result) throws InterruptedException {
 		driver.findElement(
-				By.id("_Eprescription_WAR_CloudClinikportlet_:addResultForm:result"))
+				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:result"))
+				.clear();
+		
+		Thread.sleep(1000);
+		
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:result"))
 				.sendKeys(result);
 	}
 
-	public void insertComments(String comments) {
-		driver.findElement(
-				By.id("_Eprescription_WAR_CloudClinikportlet_:addResultForm:comments"))
-				.sendKeys(comments);
+	public void insertComments(String comments) throws InterruptedException {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Thread.sleep(10000);
+		
+		js.executeScript("document.querySelector('[id^=\"_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:comments"+"\"]').value='';");
+	
+		
+		Thread.sleep(1000);
+		driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:comments")).sendKeys(comments);
+		
+		
 	}
 
-	public void submitResult() {
-		driver.findElement(
-				By.id("_Eprescription_WAR_CloudClinikportlet_:addResultForm:j_idt399"))
-				.click();
+	public void submitResult() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Thread.sleep(1000);
+		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt386').click();");
 	}
 
-	public void close() {
-		driver.findElement(
-				By.cssSelector("ui-dialog-titlebar-icon.ui-dialog-titlebar-close.ui-corner-all"))
-				.click();
+
+	public void close() throws InterruptedException {
+		
+		driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:loincHistoryDialog")).
+		findElement(By.tagName("div")).findElement(By.tagName("a")).click();
 	}
+	
 
 	public void clickOnLabSet(int sr) throws InterruptedException {
 		WebElement ele = driver
@@ -126,13 +148,26 @@ public class LabHistory {
 
 	}
 
-	public void AddRecordLabSet(String record) {
+	public void AddRecordLabSet(String record) throws InterruptedException {
+		
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:result"))
+				.clear();
+		Thread.sleep(1000);
+		
 		driver.findElement(
 				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:result"))
 				.sendKeys(record);
+		
+
 	}
 
-	public void AddComments(String comments) {
+	public void AddComments(String comments) throws InterruptedException {
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:comments"))
+				.clear();
+		Thread.sleep(1000);
+		
 		driver.findElement(
 				By.id("_Eprescription_WAR_CloudClinikportlet_:LabSetAddResultForm:j_idt375:0:comments"))
 				.sendKeys(comments);

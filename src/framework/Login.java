@@ -3,13 +3,8 @@ package framework;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -33,11 +28,15 @@ public class Login {
 
 	public void Logincredentials(String id, String pass)
 			throws InterruptedException {
+		
+		driver.get("https://cloudclinik.pk/web/cloudclinik/cc-login");
+		Thread.sleep(10000);
+		
 		idn.sendKeys(id);
 		password.sendKeys(pass);
 		
         Thread.sleep(1000);
-        driver.findElement(By.className("button-holder ")).findElement(By.tagName("button")).submit();
+        driver.findElement(By.className("button-holder")).findElement(By.tagName("button")).submit();
 	}
 
 	public void RegisterLink() {

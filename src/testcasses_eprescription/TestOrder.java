@@ -7,7 +7,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import prescription.Epres;
-import prescription.LabHistory;
 import prescription.OrderSet;
 
 public class TestOrder {
@@ -18,21 +17,23 @@ public class TestOrder {
     @Test(priority=1)
   public void testSet() throws IOException, InterruptedException {
 	  String s = sr.Searching();
-	  Thread.sleep(2000);
+	  Thread.sleep(20000);
 	  driver.manage().window().maximize();
 	  Thread.sleep(1000);
 	
 	  order.selectOrderSet();
 	  Thread.sleep(10000);
 	  order.clickAddNew();
+	  Thread.sleep(30000);
+	  order.setComplaints("nauzia");
+	   Thread.sleep(20000);
       Thread.sleep(20000);
       order.clickTemplates();
       Thread.sleep(10000);
       order.addTemplate();
       Thread.sleep(1000);
       order.closeNotesTemplate();
-      Thread.sleep(10000);
-      order.setComplaints("nauzia");
+      Thread.sleep(20000);
       Thread.sleep(10000);
       order.setDoctorNotes("test notes");
       Thread.sleep(1000);
@@ -62,7 +63,7 @@ public class TestOrder {
 	  order.closeOrderSetDiaglog();
   }*/
   
-   @Test(priority=3)
+/*   @Test(priority=3)
    public void setProcedureData() throws InterruptedException{
 	   order.addProcedureClick();
 	   Thread.sleep(10000);
@@ -81,12 +82,46 @@ public class TestOrder {
 	   order.selectFavoriteSearchClose();
 	   Thread.sleep(10000);
 	   order.setFavoriteProcedureNote("testing note for favorite procedure");
-   }
+   }*/
 	 
-	 @Test(priority=4)
-	 public void setLab(){
-		 
+/*	 @Test(priority=4)
+	 public void setLab() throws InterruptedException{
+		 order.addLabButton();
+		 Thread.sleep(10000);
+		 order.labSetData("MLABSET01",0);
+		 Thread.sleep(1000);
+		 order.setLabsetInstructions("testing instructiong lab test manual",0);
+		 Thread.sleep(2000);
+		 order.addLabButton();
+		 Thread.sleep(10000);
+		 order.labSetData("Long Name of Manual Lab",1);
+		 Thread.sleep(1000);
+		 order.setLabsetInstructions("testing instructions lab test manual", 1);
+		 Thread.sleep(1000);
+		 order.clickFavoriteButtonLab();
+		 Thread.sleep(10000);
+		 order.searchFavoriteLab("FLABSET01");
+		 Thread.sleep(10000);
+		 order.searchFavoriteLab();
+		 Thread.sleep(1000);
+		 order.selectFavoriteSearchValueLabandSet("FLABSET01");
+		 Thread.sleep(10000);
+		 order.closeLabFavorite();
+		 order.setLabsetInstructions("test by favorite lab set instruction", 2);
+		 Thread.sleep(1000);
+		 order.clickFavoriteButtonLab();
+		 Thread.sleep(1000);
+		 order.searchFavoriteLab("FLAB01");
+		 Thread.sleep(1000);
+		 order.searchFavoriteLab();
+		 Thread.sleep(1000);
+		 order.selectFavoriteSearchValueLabandSet("FLAB01");
+		 Thread.sleep(20000);
+		 order.closeLabFavorite();
+		 order.setLabsetInstructions("test by favorite lab instructions", 3);
 	 }
+	 
+	*/
 	 
 	 
 	/*  @Test(priority=3)
@@ -109,7 +144,7 @@ public class TestOrder {
 	  */
 	 
 	 
-	 
+	//*[@id="_Eprescription_WAR_CloudClinikportlet_:presc_form:medicationDT:0:selectFreq"]/div[3]/span
 	 
 	 
   

@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testcasses_eprescription.TestOrder">
+      <class name="testcasses_eprescription.Vital">
         <methods>
-          <include name="setProcedureData"/>
+          <include name="testDates"/>
         </methods>
-      </class> <!-- testcasses_eprescription.TestOrder -->
+      </class> <!-- testcasses_eprescription.Vital -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

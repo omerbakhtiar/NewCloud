@@ -1,14 +1,10 @@
 package testcasses_eprescription;
 
+import java.io.IOException;
+
 import org.eclipse.jface.text.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
 import org.testng.annotations.Test;
 
 import prescription.Epres;
@@ -20,7 +16,7 @@ public class LabHistoryTest {
 	WebDriver driver = new FirefoxDriver();
 	Epres sr = new Epres(driver);
     LabSet set=new LabSet(driver);
-	@Test(enabled = false)
+	@Test(enabled=false)
 	public void insertLabHistory() throws IOException, InterruptedException {
 		String s = sr.Searching();
 		Thread.sleep(20000);
@@ -42,18 +38,18 @@ public class LabHistoryTest {
 		Thread.sleep(10000);
 
 		lab.AddResult();
-		Thread.sleep(10000);
-
-		lab.insertComments("testing comments");
+		Thread.sleep(20000);
+        lab.insertResult("12");
+        Thread.sleep(10000);
+		lab.insertComments("newcomments");
 		Thread.sleep(2000);
 
-		lab.insertResult("test resuls");
-		Thread.sleep(1000);
-
 		lab.submitResult();
-		Thread.sleep(100000);
-
+		
+		Thread.sleep(10000);
 		lab.close();
+		driver.close();
+		Thread.sleep(1000);
 
 	}
 
@@ -78,7 +74,7 @@ public class LabHistoryTest {
 		
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void testSeenPatient() throws IOException, InterruptedException{
 		String s = sr.Searching();
 	
@@ -97,7 +93,7 @@ public class LabHistoryTest {
 	    Assert.isTrue(result);
 	}
 	
-	@Test(enabled=false)
+	@Test(priority=2)
 	public void insertLabSet() throws IOException, InterruptedException{
 		String s = sr.Searching();
 		

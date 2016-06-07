@@ -3,17 +3,14 @@ package patient;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.FindBy;
 
 import bookApointment.Appointment;
 import framework.Login;
-import framework.Register;
 
 public class Pateintvital {
 	
@@ -38,7 +35,8 @@ public class Pateintvital {
 	}
 	
 	public void searchPatient() throws InterruptedException{
-		driver.findElement(By.xpath("//*[@id='_appointmentWidget_WAR_CloudClinikportlet_:form:btn_select_patient']")).click();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("document.getElementById('_appointmentWidget_WAR_CloudClinikportlet_:form:btn_select_patient').click();");
 		Thread.sleep(1000);
 	}
 	
