@@ -15,6 +15,8 @@ public class VitalHistory {
 	ArrayList<WebElement> td = new ArrayList<WebElement>();
 	ArrayList<WebElement> li = new ArrayList<WebElement>();
 	ArrayList<WebElement> tr = new ArrayList<WebElement>();
+	ArrayList<VitalData> vi = new ArrayList<VitalData>();
+	boolean result;
 
 	public VitalHistory(WebDriver driv) {
 		driver = driv;
@@ -166,15 +168,58 @@ public class VitalHistory {
 				.click();
 	}
 
-	public void getTableData() {
+	public void getTableData(String date) {
 
 		WebElement ele = driver
 				.findElement(By
 						.id("_Eprescription_WAR_CloudClinikportlet_:vitalPatientHistoryForm:j_idt410_data"));
+
+		tr = (ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
+
+		for (int i = 0; i < tr.size(); i++) {
+			td = (ArrayList<WebElement>) tr.get(i).findElements(
+					By.tagName("td"));
+
+			if (td.get(0).getText().contains(date)) {
+
+				VitalData data = new VitalData(td.get(0).getText(), td.get(1)
+						.getText(), td.get(2).getText(), td.get(3).getText(),
+						td.get(4).getText(), td.get(5).getText(), td.get(6)
+								.getText(), td.get(7).getText(), td.get(8)
+								.getText(),td.get(9).getText());
+
+				vi.add(data);
+			}
+		}
+
+	}
+
+	public boolean verifyTableData(String date, String temp, String bp,
+			String pulse, String RR, String Height, String weight, String BMI,
+			String Notes, String BSL) {
+
+		for (int i = 0; i < vi.size(); i++) {
+
+			if (vi.get(i).getDate().contains(date)
+					&& vi.get(i).getTemprature().contains(temp)
+					&& vi.get(i).getbpt().contains(bp)
+					&& vi.get(i).getPulse().contains(pulse)
+					&& vi.get(i).getRR().contains(RR)
+					&& vi.get(i).getHeight().contains(Height)
+					&& vi.get(i).getWeight().contains(weight)
+					&& vi.get(i).getNotes().contains(Notes)
+					&& vi.get(i).getBMI().contains(BMI)
+					&& vi.get(i).getBSL().contains(BSL)) {
+				result = true;
+				
+			} else {
+				result = false;
+				
+			}
+		}
+
+		return result;
 		
-		tr=(ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
-		
-		System.out.println(tr.size());
 	}
 
 }

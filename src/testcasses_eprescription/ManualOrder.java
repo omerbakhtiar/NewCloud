@@ -3,7 +3,10 @@ package testcasses_eprescription;
 import java.io.IOException;
 
 import org.testng.annotations.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -16,7 +19,8 @@ public class ManualOrder {
 	WebDriver driver = new FirefoxDriver();
 	Epres sr = new Epres(driver);
 	OrderSet order = new OrderSet(driver);
-
+	  private boolean acceptNextAlert = true;
+	  private StringBuffer verificationErrors = new StringBuffer(); 
  	@Test(priority = 1)
 	public void complaints() throws IOException, InterruptedException {
 		String s = sr.Searching();
@@ -27,21 +31,26 @@ public class ManualOrder {
 		Thread.sleep(10000);
 		order.clickAddNew();
 		Thread.sleep(10000);
-		order.setComplaints("nauzia");
-		Thread.sleep(10000);
-		order.setDoctorNotes("test notes");
-		Thread.sleep(1000);
-		order.setOrderSetName("dengue");
-		Thread.sleep(20000);
-		order.clickTemplates();
-		Thread.sleep(10000);
-		order.addTemplate();
-		Thread.sleep(1000);
-		order.closeNotesTemplate();
-		Thread.sleep(10000);
 	 
 	  }
-	  @Test(priority=2)
+ 	
+ 	   @Test(priority=2)
+ 	   public void setnotes() throws InterruptedException{
+ 			order.setComplaints("nauzia");
+ 			Thread.sleep(10000);
+ 			order.setDoctorNotes("test notes");
+ 			Thread.sleep(1000);
+ 			order.setOrderSetName("dengue");
+ 			Thread.sleep(20000);
+ 			order.clickTemplates();
+ 			Thread.sleep(10000);
+ 			order.addTemplate();
+ 			Thread.sleep(1000);
+ 			order.closeNotesTemplate();
+ 			Thread.sleep(10000);
+ 	   }
+ 	
+	  @Test(priority=3)
 	  public void setDisease() throws InterruptedException{
 	   order.addDisease();
 	   Thread.sleep(1000);
@@ -49,7 +58,7 @@ public class ManualOrder {
 	   Thread.sleep(20000);
 	  }
 	  
-	  @Test(priority=3)
+	  @Test(priority=4)
 	  public void setProcedureData() throws InterruptedException{
 	    order.addProcedureClick();
 	    Thread.sleep(10000);
@@ -59,7 +68,7 @@ public class ManualOrder {
 	    Thread.sleep(10000); 
 	  }
 	  
-	  @Test(priority=4)
+	  @Test(priority=5)
 	  public void setLab() throws InterruptedException{
 	   order.addLabButton();
 	   Thread.sleep(20000);
@@ -76,7 +85,7 @@ public class ManualOrder {
 	  }
 
 	
- 	 @Test(priority=4)
+ 	 @Test(priority=6)
 	  public void setMedicine() throws InterruptedException{
 	   order.addMedicieneButton();
 	   Thread.sleep(10000);
@@ -95,7 +104,7 @@ public class ManualOrder {
 	   order.closeOrderSetDiaglog();
 	  }
  	 
- 	  @Test(priority=5)
+ 	  @Test(priority=7)
  	  public void applyOrderSet() throws InterruptedException{
  		  order.selectOrderSet();
  		  Thread.sleep(10000);
@@ -107,6 +116,41 @@ public class ManualOrder {
  		  Thread.sleep(1000);
  		  driver.close();
  	  }
+ 	  
+ 	 private boolean isElementPresent(By by) {
+ 	    try {
+ 	      driver.findElement(by);
+ 	      return true;
+ 	    } catch (NoSuchElementException e) {
+ 	      return false;
+ 	    }
+ 	  }
+
+ 	  private boolean isAlertPresent() {
+ 	    try {
+ 	      driver.switchTo().alert();
+ 	      return true;
+ 	    } catch (NoAlertPresentException e) {
+ 	      return false;
+ 	    }
+ 	  }
+
+ 	  private String closeAlertAndGetItsText() {
+ 	    try {
+ 	      Alert alert = driver.switchTo().alert();
+ 	      String alertText = alert.getText();
+ 	      if (acceptNextAlert) {
+ 	        alert.accept();
+ 	      } else {
+ 	        alert.dismiss();
+ 	      }
+ 	      return alertText;
+ 	    } finally {
+ 	      acceptNextAlert = true;
+ 	    }
+ 	  }
+
+
  	 
 	}
 

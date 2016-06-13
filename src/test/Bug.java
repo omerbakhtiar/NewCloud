@@ -40,6 +40,7 @@ public class Bug {
          //Assert.assertTrue(!message.contains("Appointment / Find Doctor"));
   
          Assert.assertTrue(driver.findElement(By.className("cc_DesktopNavigation_contactUs")).isDisplayed());
+  
 		
 	}
 	

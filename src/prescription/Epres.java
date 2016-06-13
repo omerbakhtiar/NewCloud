@@ -62,7 +62,7 @@ public class Epres {
 		vi.searchPatient();
 
 		Appointment app = new Appointment(driver);
-		Thread.sleep(30000);
+		Thread.sleep(3000);
 
 		arr = (ArrayList<WebElement>) driver
 				.findElement(
@@ -72,7 +72,7 @@ public class Epres {
 
 		arr.get(2).findElement(By.tagName("input")).sendKeys("974100301865");
 
-		Thread.sleep(30000);
+		Thread.sleep(3000);
 
 		driver.findElement(
 				By.xpath(".//*[@id='_appointmentWidget_WAR_CloudClinikportlet_:j_idt22:patientSearchBtn']"))

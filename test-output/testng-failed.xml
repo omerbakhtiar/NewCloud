@@ -3,11 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testcasses_eprescription.Vital">
+      <class name="testcasses_eprescription.DeleteOrderSet">
         <methods>
-          <include name="testDates"/>
+          <include name="deleteComplaints"/>
+          <include name="deleteDiet"/>
+          <include name="deleteProcedure"/>
+          <include name="deleteLabSet"/>
+          <include name="deleteDoctorNotes"/>
+          <include name="deleteMedicine"/>
+          <include name="deleteDiease"/>
         </methods>
-      </class> <!-- testcasses_eprescription.Vital -->
+      </class> <!-- testcasses_eprescription.DeleteOrderSet -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

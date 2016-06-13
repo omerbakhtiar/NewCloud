@@ -2,14 +2,10 @@ package prescription;
 
 import java.util.ArrayList;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 public class OrderSet {
 
@@ -18,6 +14,7 @@ public class OrderSet {
 	ArrayList<WebElement> td = new ArrayList<WebElement>();
 	ArrayList<WebElement> div = new ArrayList<WebElement>();
 	ArrayList<WebElement> li = new ArrayList<WebElement>();
+	ArrayList<WebElement> span = new ArrayList<WebElement>();
 
 	public OrderSet(WebDriver driv) {
 		driver = driv;
@@ -178,8 +175,7 @@ public class OrderSet {
 		driver.findElement(
 				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:diagnosticDT:0:osProcedureNote"))
 				.sendKeys(note);
-		
-	
+
 	}
 
 	public void clickFavoriteProcedure() throws InterruptedException {
@@ -228,11 +224,12 @@ public class OrderSet {
 				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:addLoinc"))
 				.click();
 	}
-	
-	public void clickFavoriteLab(){
-		driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:applyFavoriteLoinc")).click();
+
+	public void clickFavoriteLab() {
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:applyFavoriteLoinc"))
+				.click();
 	}
-	
 
 	public void labSetData(String data, int index) throws InterruptedException {
 		driver.findElement(
@@ -293,8 +290,7 @@ public class OrderSet {
 		driver.findElement(
 				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:loincDT:"
 						+ index + ":loincInstructions")).sendKeys(labset);
-		
-		
+
 	}
 
 	public void addMedicieneButton() throws InterruptedException {
@@ -341,44 +337,48 @@ public class OrderSet {
 
 		WebElement ele = driver
 				.findElement(
-						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:0:selectFreq_panel")).findElement(By.tagName("div"))
-				.findElement(By.tagName("ul"));
-		
-		li=(ArrayList<WebElement>) ele.findElements(By.tagName("li"));
-		
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:0:selectFreq_panel"))
+				.findElement(By.tagName("div")).findElement(By.tagName("ul"));
+
+		li = (ArrayList<WebElement>) ele.findElements(By.tagName("li"));
+
 		li.get(1).click();
-		
-		
-		
+
 	}
 
 	public void setMedicineDuration(String duration, int index)
 			throws InterruptedException {
 		WebElement ele = driver
 				.findElement(By
-						.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:"+index+":dura_input"));
+						.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:"
+								+ index + ":dura_input"));
 		ele.clear();
-		
+
 		Thread.sleep(10000);
 		ele.sendKeys(duration);
 	}
 
 	public void setMedicineRoute(int index) throws InterruptedException {
-		
+
 		driver.findElement(
 				By.xpath("//*[@id='_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:0:selectRoute']/div[3]"))
 				.click();
 		Thread.sleep(1000);
-		
-		WebElement ele=driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:0:selectRoute_panel")).
-				findElement(By.tagName("div")).findElement(By.tagName("ul"));
-		
-		li=(ArrayList<WebElement>) ele.findElements(By.tagName("li"));
-		
+
+		WebElement ele = driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:0:selectRoute_panel"))
+				.findElement(By.tagName("div")).findElement(By.tagName("ul"));
+
+		li = (ArrayList<WebElement>) ele.findElements(By.tagName("li"));
+
 		li.get(1).click();
-		
-		/*((JavascriptExecutor) driver)
-				.executeScript("$('#_Eprescription_WAR_CloudClinikportlet_\\:os_form\\:medicationDT\\:"+ index+"\\:selectRoute_panel li\\:nth-child(3)').click();");*/
+
+		/*
+		 * ((JavascriptExecutor) driver) .executeScript(
+		 * "$('#_Eprescription_WAR_CloudClinikportlet_\\:os_form\\:medicationDT\\:"
+		 * + index+"\\:selectRoute_panel li\\:nth-child(3)').click();");
+		 */
 	}
 
 	public void setDietInstruction(String diet) {
@@ -392,31 +392,35 @@ public class OrderSet {
 				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:favoriteMedicationBtn"))
 				.click();
 	}
-	
-	public void setSearchFavoriteValueMedicine(String medicine) throws InterruptedException{
 
-		
+	public void setSearchFavoriteValueMedicine(String medicine)
+			throws InterruptedException {
+
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Thread.sleep(1000);
-		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchMed').value='"+medicine+"';");
+		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchMed').value='"
+				+ medicine + "';");
 	}
-		//document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchMed').value="Advance";
-      
-	public void searchMedButton(){
-		driver.findElement(By.id("_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchFavMedicinBtn")).click();
-		
+
+	// document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchMed').value="Advance";
+
+	public void searchMedButton() {
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:searchFavMedicinBtn"))
+				.click();
+
 	}
-	
-	public void selectFavoriteMedSearchData(String name) throws InterruptedException{
+
+	public void selectFavoriteMedSearchData(String name)
+			throws InterruptedException {
 		Thread.sleep(1000);
 		driver.findElement(By.partialLinkText(name)).click();
 	}
-	
-	public void closefavoriteMedPopUp(){
+
+	public void closefavoriteMedPopUp() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-	   js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:closeMedicineFavoritePopup').click()");
+		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:fav_medicine_popup_form:closeMedicineFavoritePopup').click()");
 	}
-	
 
 	public void applyOrderSet(String templateName) {
 
@@ -440,8 +444,8 @@ public class OrderSet {
 			}
 		}
 	}
-	
-	public void deleteOrderSet(String templateName) {
+
+	public void deleteOrderSet(String templateName) throws InterruptedException {
 
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 
@@ -456,33 +460,207 @@ public class OrderSet {
 
 			String id = "_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset"
 					+ ":" + i + ":j_idt84";
-			
-			String deleteid="_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset:"+i+":j_idt87";
-			
-			WebElement ele = driver.findElement(By.id(id));
+
+			// _Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset:0:j_idt87
+
+			String deleteid = "_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset:"
+					+ i + ":j_idt87";
+
+			WebElement ele = driver.findElement(By.id(deleteid));
 
 			if (td.get(1).getText().contains(templateName)) {
-				jse.executeScript("arguments[0].click()", deleteid);
+				jse.executeScript("arguments[0].click();", ele);
+				Thread.sleep(1000);
+				driver.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:deleteOrderSetConfirmationForm:j_idt95"))
+						.click();
+				break;
+
 			}
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void editOrderSet(String templateName) throws InterruptedException {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		row = (ArrayList<WebElement>) driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset_data"))
+				.findElements(By.tagName("tr"));
+		for (int i = 0; i < row.size(); i++) {
+
+			td = (ArrayList<WebElement>) row.get(i).findElements(
+					By.tagName("td"));
+
+			String id = "_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset"
+					+ ":" + i + ":j_idt84";
+
+			// _Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset:0:j_idt87
+
+			String editid = "_Eprescription_WAR_CloudClinikportlet_:orderSetForm:dt_orderset:"
+					+ i + ":j_idt78";
+
+			WebElement ele = driver.findElement(By.id(editid));
+
+			if (td.get(1).getText().contains(templateName)) {
+				jse.executeScript("arguments[0].click();", ele);
+				Thread.sleep(1000);
+				break;
+
+			}
+		}
+	}
 
 	public void closeOrderSetMainWindow() {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById('_Eprescription_WAR_CloudClinikportlet_:orderSetForm:j_idt90').click()");
+
+	}
+
+	public void deleteDiseases() throws InterruptedException {
+		WebElement ele = driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:diseaseDT"))
+				.findElement(By.tagName("tbody"));
+
+		row = (ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
+
+		for (int j = row.size(); j > 0; j--) {
+
+			int i = 0;
+			driver.findElement(
+					By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:diseaseDT:"
+							+ i + ":deleteOsDisease")).click();
+
+			if (i == 1) {
+				i = 0;
+			}
+
+		}
+	}
+
+	public void deleteProcedure() {
+		// _Eprescription_WAR_CloudClinikportlet_:os_form:diagnosticDT
+
+		WebElement ele = driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:diagnosticDT"))
+				.findElement(By.tagName("tbody"));
+
+		row = (ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
+
+		for (int j = row.size(); j > 0; j--) {
+
+			int i = 0;
+
+			driver.findElement(
+					By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:diagnosticDT:"
+							+ i + ":deleteOsProcedure")).click();
+
+			if (i == 1) {
+				i = 0;
+			}
+
+		}
+	}
+
+	public void deleteLabSet() throws InterruptedException {
+		WebElement ele = driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:loincDT"))
+				.findElement(By.tagName("tbody"));
+
+		row = (ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
+
+		for (int j = row.size(); j > 0; j--) {
+
+			int i = 0;
+
+			boolean result = driver
+					.findElement(
+							By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:loincDT:"
+									+ i + ":j_idt145")).isDisplayed();
+			if (result == true) {
+				driver.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:loincDT:"
+								+ i + ":j_idt145")).click();
+				Thread.sleep(1000);
+			} else {
+				break;
+			}
+
+			if (i == 1) {
+				i = 0;
+			}
+		}
+	}
+
+	public void deleteMedicine() throws InterruptedException {
+		WebElement ele = driver
+				.findElement(
+						By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT"))
+				.findElement(By.tagName("tbody"));
+		row = (ArrayList<WebElement>) ele.findElements(By.tagName("tr"));
+		int i = 0;
+		for (int j = row.size(); j > 0; j--) {
+
+			driver.findElement(
+					By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:medicationDT:"
+							+ i + ":deleteOsMedication")).click();
+			i++;
+			Thread.sleep(10000);
+			if (i == 1) {
+				i = 0;
+			}
+		}
+
+	}
+
+	public void deleteComplaints() {
+		WebElement ele = driver
+				.findElement(By
+						.id("_Eprescription_WAR_CloudClinikportlet_:os_form:complaints"));
+
+		li = (ArrayList<WebElement>) ele.findElement(By.tagName("ul"))
+				.findElements(By.tagName("li"));
+
+		for (int i = 0; i < li.size() - 1; i++) {
+			span = (ArrayList<WebElement>) li.get(i).findElements(
+					By.tagName("span"));
+			span.get(1).click();
+
+		}
+	}
+
+	public void deleteInstruction() {
+		WebElement ele = driver
+				.findElement(By
+						.id("_Eprescription_WAR_CloudClinikportlet_:os_form:suggestions"));
+
+		li = (ArrayList<WebElement>) ele.findElement(By.tagName("ul"))
+				.findElements(By.tagName("li"));
+
+		for (int i = 0; i < li.size() - 1; i++) {
+			span = (ArrayList<WebElement>) li.get(i).findElements(
+					By.tagName("span"));
+			span.get(1).click();
+
+		}
+	}
+
+	public void clickUpdate() {
+		driver.findElement(
+				By.id("_Eprescription_WAR_CloudClinikportlet_:os_form:os_btn_presc_update"))
+				.click();
+	}
+
+	public void closeMainWindow() {
 		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		js.executeScript("$('.ui-icon.ui-icon-closethick').click();");
+
 		
 	}
 

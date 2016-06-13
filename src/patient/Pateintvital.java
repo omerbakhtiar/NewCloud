@@ -40,6 +40,11 @@ public class Pateintvital {
 		Thread.sleep(1000);
 	}
 	
+	public void closeSearchPatient(){
+		driver.findElement(By.id("_appointmentWidget_WAR_CloudClinikportlet_:searchpatient")).
+		findElement(By.tagName("div")).findElement(By.tagName("a")).click();
+	}
+	
 	
 	public void clicktable(){
 
